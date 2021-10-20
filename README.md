@@ -15,3 +15,19 @@
     ```bash
     laravel new ddev-cypress
     ```
+
+- Configure DDEV server and accept defaults
+
+    ```bash
+    ddev condig
+
+    Project name (ddev-cypress)
+    Docroot Location (public)
+    Project Type [...] (laravel)
+    ```
+
+- Confirm project is setup by starting the DDEV server and accessing the homepage:
+
+    ```bash
+    ddev start
+    ```
