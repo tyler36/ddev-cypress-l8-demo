@@ -11,8 +11,8 @@
       - [`cypress-run`](#cypressrun)
     - [Notes](#notes)
     - [Troubleshooting](#troubleshooting)
-      - ["Could not find a Cypress configuration file, exiting."](#could-not-find-a-cypress-configuration-file-exiting)
-      - [`Unable to open X display.`](#unable-to-open-x-display)
+      - ["Could not find a Cypress configuration file, exiting"](#could-not-find-a-cypress-configuration-file-exiting)
+      - ["Unable to open X display."](#unable-to-open-x-display)
 
 ## Goal
 
@@ -114,13 +114,15 @@ ddev cypress-run --browser chrome
 
 ### Troubleshooting
 
-#### "Could not find a Cypress configuration file, exiting."
+
+#### "Could not find a Cypress configuration file, exiting"
 
 Cypress expects a directory strutures containing the tests, plugins and support files.
 
 - If the `./cypress` directory does not exist, it will scaffold out these directories, including a default `cypress.json` setting file and example tests when you first run `ddev cypress-open`.
 - Make sure you have a `cypress.json` file in your project root, or use `--config [file]` argument to specify one.
 
-#### `Unable to open X display.`
+#### "Unable to open X display."
 
-- This recipe forwards the Cypress GUI via an X11 server. Please ensure you have this working on your host system.
+- This recipe forwards the Cypress GUI via an X11  server. Please ensure you have this working on your host system.
+- For Windows 10 users, try [GWSL](https://opticos.github.io/gwsl/tutorials/manual.html) (via [Microsoft store](ms-windows-store://pdp/?productid=9NL6KD1H33V3)), or [VcXsrv](https://sourceforge.net/projects/vcxsrv/) (via [chocolatey](https://community.chocolatey.org/packages/vcxsrv#versionhistory))
