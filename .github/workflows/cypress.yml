@@ -1,15 +1,21 @@
 name: End-to-end tests
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+
 
 jobs:
-  cypress-run:
-    runs-on: ubuntu-20.04
+  test:
+    runs-on: ubuntu-18.04    # tested on: 18.04/20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-
+      - uses: actions/checkout@v1
+      - uses: jonaseberle/github-action-setup-ddev@v1
+      # composer install
+      - run: ddev composer install
+      # create basic environment
+      - run: ddev exec "cat .env.example | sed  -E 's/DB_(HOST|DATABASE|USERNAME|PASSWORD)=(.*)/DB_\1=db/g' > .env"
+      # Generate key
+      - run: ddev exec "php artisan key:generate"
+      # Generate key
+      - run: ddev cypress-run
